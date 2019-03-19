@@ -1,0 +1,65 @@
+{
+    "name": "vsc-github-trending",
+    "displayName": "VSC Github Trending",
+    "version": "1.0.0",
+    "description": "Explore trending Github repositories directly in VSCode",
+    "engines": {
+        "vscode": "^1.23.0"
+    },
+    "keywords": [
+        "github",
+        "popular",
+        "trending",
+        "repositories"
+    ],
+    "publisher": "4gray",
+    "icon": "assets/icon.png",
+    "homepage": "https://4gray.github.io/vsc-github-trending",
+    "galleryBanner": {
+        "color": "#5c2d91",
+        "theme": "dark"
+    },
+    "activationEvents": [
+        "onCommand:react-webview.start"
+    ],
+    "main": "./build/ext-src/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "react-webview.start",
+                "title": "Open Github Trending",
+                "category": "GT"
+            }
+        ]
+    },
+    "categories": [
+        "Other"
+    ],
+    "dependencies": {
+        "@material-ui/core": "^3.9.2",
+        "@material-ui/icons": "^3.0.2",
+        "react": "^16.3.2",
+        "react-dom": "^16.3.2",
+        "react-scripts-ts": "2.16.0"
+    },
+    "scripts": {
+        "vscode:prepublish": "react-scripts-ts build && tsc -p tsconfig.extension.json",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "start": "react-scripts-ts start",
+        "build": "react-scripts-ts build && tsc -p tsconfig.extension.json",
+        "test": "react-scripts-ts test --env=jsdom",
+        "eject": "react-scripts-ts eject"
+    },
+    "devDependencies": {
+        "@types/jest": "^22.2.3",
+        "@types/node": "^10.1.2",
+        "@types/react": "^16.3.14",
+        "@types/react-dom": "^16.0.5",
+        "typescript": "^2.8.3",
+        "vscode": "^1.1.30"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/4gray/vsc-github-trending.git"
+    }
+}

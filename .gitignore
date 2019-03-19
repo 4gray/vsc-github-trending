@@ -1,0 +1,4 @@
+.env
+.sonarlint
+node_modules
+build

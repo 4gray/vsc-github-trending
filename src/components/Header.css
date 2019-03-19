@@ -1,0 +1,15 @@
+.Header {
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+.vscode-dark .Header {
+    margin: 10px;
+    background: #0000005c;
+}
+
+.vscode-light .Header {
+    margin: 10px;
+    background: #ffffff5c;
+    color: #333;
+}
