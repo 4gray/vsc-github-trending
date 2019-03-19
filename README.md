@@ -2,7 +2,7 @@
 
 Explore Github Trending repositories directly from Visual Studio Code. Extension is based on React, [Material-UI](https://material-ui.com/), [Trending API](https://github.com/huchenme/github-trending-api) and VSCode Webview API.
 
-<img src="screenshot.png" title="VSC Github Trending" />
+<img src="https://raw.githubusercontent.com/4gray/vsc-github-trending/master/screenshot.png" title="VSC Github Trending" />
 
 ## Usage
 
