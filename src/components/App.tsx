@@ -40,8 +40,7 @@ class App extends React.Component<any> {
             .then(
                 data => this.setState({
                     languages: {
-                        all: data.all,
-                        popular: data.popular
+                        all: data
                     }
                 })
             );

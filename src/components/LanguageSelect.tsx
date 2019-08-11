@@ -20,12 +20,6 @@ class LanguageSelect extends React.Component<any, any> {
                             name: 'selectedLanguage'
                         }}>
                         <option disabled={true}>
-                            Popular
-                        </option>
-                        {this.props.languages.popular.map((lang: any) =>
-                            <option key={lang.urlParam} value={lang.urlParam}>{lang.name}</option>
-                        )}
-                        <option disabled={true}>
                             All languages
                         </option>
                         {this.props.languages.all.map((lang: any) =>
