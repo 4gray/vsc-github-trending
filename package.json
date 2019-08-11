@@ -1,7 +1,7 @@
 {
     "name": "vsc-github-trending",
     "displayName": "VSC Github Trending",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Explore trending Github repositories directly in VSCode",
     "engines": {
         "vscode": "^1.23.0"
@@ -48,7 +48,8 @@
         "start": "react-scripts-ts start",
         "build": "react-scripts-ts build && tsc -p tsconfig.extension.json",
         "test": "react-scripts-ts test --env=jsdom",
-        "eject": "react-scripts-ts eject"
+        "eject": "react-scripts-ts eject",
+        "package": "vsce package --yarn"
     },
     "devDependencies": {
         "@types/jest": "^22.2.3",
