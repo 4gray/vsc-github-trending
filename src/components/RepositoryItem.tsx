@@ -8,22 +8,21 @@ import StarIcon from '@material-ui/icons/Star';
 import * as React from 'react';
 import './RepositoryItem.css';
 
-
-
 class RepositoryItem extends React.Component<any> {
-
     constructor(props: any) {
         super(props);
     }
 
     public formatStars(num: number) {
-        return num > 999 ? (num / 1000).toFixed(1) + 'k' : num
+        return num > 999 ? (num / 1000).toFixed(1) + 'k' : num;
     }
 
     public render() {
         return (
-
-            <Card title={this.props.item.name} key={this.props.item.url} className="Item">
+            <Card
+                title={this.props.item.name}
+                key={this.props.item.url}
+                className="Item">
                 <CardContent>
                     <Typography variant="h6" component="h6">
                         <a href={this.props.item.url}>
@@ -32,8 +31,9 @@ class RepositoryItem extends React.Component<any> {
                     </Typography>
                     {this.props.item.description}
                 </CardContent>
-                <CardActions className="CardActions" disableActionSpacing={true}>
-
+                <CardActions
+                    className="CardActions"
+                    disableActionSpacing={true}>
                     <Tooltip title="Language" aria-label="Language">
                         <Chip
                             label={this.props.item.language}
@@ -60,17 +60,23 @@ class RepositoryItem extends React.Component<any> {
                         />
                     </Tooltip>
 
-                    {this.props.item.builtBy.map((person: any) =>
-                        <Tooltip key={person.username} title={person.username} aria-label={person.username}>
+                    {this.props.item.builtBy.map((person: any) => (
+                        <Tooltip
+                            key={person.username}
+                            title={person.username}
+                            aria-label={person.username}>
                             <Link href={person.href}>
-                                <img src={person.avatar} width={30} height={30} className="avatar" />
+                                <img
+                                    src={person.avatar}
+                                    width={30}
+                                    height={30}
+                                    className="avatar"
+                                />
                             </Link>
                         </Tooltip>
-                    )}
-
+                    ))}
                 </CardActions>
             </Card>
-
         );
     }
 }

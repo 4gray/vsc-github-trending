@@ -5,22 +5,27 @@ import * as React from 'react';
 import './App.css';
 
 class DateSelect extends React.Component<any, any> {
-
     public render() {
         return (
             <form autoComplete="off">
                 <FormControl className="repo-field">
-                    <InputLabel className="label" htmlFor="interval">Trending for:</InputLabel>
+                    <InputLabel className="label" htmlFor="interval">
+                        Trending for:
+                    </InputLabel>
                     <NativeSelect
                         className="DateSelect"
                         value={this.props.selectedInterval}
                         onChange={this.props.onChange}
                         inputProps={{
                             id: 'interval',
-                            name: 'selectedInterval'
+                            name: 'selectedInterval',
                         }}>
-                        {this.props.intervals.map((item: string, index: number) =>
-                            <option key={index} value={item}>{item}</option>
+                        {this.props.intervals.map(
+                            (item: string, index: number) => (
+                                <option key={index} value={item}>
+                                    {item}
+                                </option>
+                            )
                         )}
                     </NativeSelect>
                 </FormControl>
