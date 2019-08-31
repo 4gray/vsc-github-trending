@@ -5,3 +5,7 @@ body {
     background: none;
     background-color: none;
 }
+
+a {
+    text-decoration: none;
+}
