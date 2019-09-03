@@ -2,19 +2,20 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-
-    context.subscriptions.push(vscode.commands.registerCommand('react-webview.start', () => {
-        ReactPanel.createOrShow(context.extensionPath);
-    }));
+    context.subscriptions.push(
+        vscode.commands.registerCommand('react-webview.start', () => {
+            ReactPanel.createOrShow(context.extensionPath);
+        })
+    );
 }
 
 /**
  * Manages react webview panels
  */
 class ReactPanel {
-	/**
-	 * Track the currently panel. Only allow a single panel to exist at a time.
-	 */
+    /**
+     * Track the currently panel. Only allow a single panel to exist at a time.
+     */
     public static currentPanel: ReactPanel | undefined;
 
     private static readonly viewType = 'react';
@@ -24,14 +25,19 @@ class ReactPanel {
     private _disposables: vscode.Disposable[] = [];
 
     public static createOrShow(extensionPath: string) {
-        const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
+        const column = vscode.window.activeTextEditor
+            ? vscode.window.activeTextEditor.viewColumn
+            : undefined;
 
         // If we already have a panel, show it.
         // Otherwise, create a new panel.
         if (ReactPanel.currentPanel) {
             ReactPanel.currentPanel._panel.reveal(column);
         } else {
-            ReactPanel.currentPanel = new ReactPanel(extensionPath, column || vscode.ViewColumn.One);
+            ReactPanel.currentPanel = new ReactPanel(
+                extensionPath,
+                column || vscode.ViewColumn.One
+            );
         }
     }
 
@@ -39,15 +45,20 @@ class ReactPanel {
         this._extensionPath = extensionPath;
 
         // Create and show a new webview panel
-        this._panel = vscode.window.createWebviewPanel(ReactPanel.viewType, "VSC Github Trending", column, {
-            // Enable javascript in the webview
-            enableScripts: true,
+        this._panel = vscode.window.createWebviewPanel(
+            ReactPanel.viewType,
+            'VSC Github Trending',
+            column,
+            {
+                // Enable javascript in the webview
+                enableScripts: true,
 
-            // And restric the webview to only loading content from our extension's `media` directory.
-            localResourceRoots: [
-                vscode.Uri.file(path.join(this._extensionPath, 'build'))
-            ]
-        });
+                // And restrict the webview to only loading content from our extension's `media` directory.
+                localResourceRoots: [
+                    vscode.Uri.file(path.join(this._extensionPath, 'build')),
+                ],
+            }
+        );
 
         // Set the webview's initial html content
         this._panel.webview.html = this._getHtmlForWebview();
@@ -57,19 +68,17 @@ class ReactPanel {
         this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
 
         // Handle messages from the webview
-        this._panel.webview.onDidReceiveMessage((message: any) => {
-            switch (message.command) {
-                case 'alert':
-                    vscode.window.showErrorMessage(message.text);
-                    return;
-            }
-        }, null, this._disposables);
-    }
-
-    public doRefactor() {
-        // Send a message to the webview webview.
-        // You can send any JSON serializable data.
-        this._panel.webview.postMessage({ command: 'refactor' });
+        this._panel.webview.onDidReceiveMessage(
+            (message: any) => {
+                switch (message.command) {
+                    case 'alert':
+                        vscode.window.showErrorMessage(message.text);
+                        return;
+                }
+            },
+            null,
+            this._disposables
+        );
     }
 
     public dispose() {
@@ -87,13 +96,21 @@ class ReactPanel {
     }
 
     private _getHtmlForWebview() {
-        const manifest = require(path.join(this._extensionPath, 'build', 'asset-manifest.json'));
+        const manifest = require(path.join(
+            this._extensionPath,
+            'build',
+            'asset-manifest.json'
+        ))['files'];
         const mainScript = manifest['main.js'];
         const mainStyle = manifest['main.css'];
 
-        const scriptPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'build', mainScript));
+        const scriptPathOnDisk = vscode.Uri.file(
+            path.join(this._extensionPath, 'build', mainScript)
+        );
         const scriptUri = scriptPathOnDisk.with({ scheme: 'vscode-resource' });
-        const stylePathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'build', mainStyle));
+        const stylePathOnDisk = vscode.Uri.file(
+            path.join(this._extensionPath, 'build', mainStyle)
+        );
         const styleUri = stylePathOnDisk.with({ scheme: 'vscode-resource' });
 
         // Use a nonce to whitelist which scripts can be run
@@ -108,7 +125,9 @@ class ReactPanel {
 				<title>Github Trending</title>
 				<link rel="stylesheet" type="text/css" href="${styleUri}">
 
-				<base href="${vscode.Uri.file(path.join(this._extensionPath, 'build')).with({ scheme: 'vscode-resource' })}/">
+				<base href="${vscode.Uri.file(path.join(this._extensionPath, 'build')).with({
+                    scheme: 'vscode-resource',
+                })}/">
 			</head>
 
 			<body>
@@ -122,8 +141,9 @@ class ReactPanel {
 }
 
 function getNonce() {
-    let text = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let text = '';
+    const possible =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (let i = 0; i < 32; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
