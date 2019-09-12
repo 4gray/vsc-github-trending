@@ -4,7 +4,13 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.commands.registerCommand('react-webview.start', () => {
-            ReactPanel.createOrShow(context.extensionPath);
+            const panel = ReactPanel.createOrShow(context.extensionPath);
+
+            // get configuration and send to web application
+            const config = vscode.workspace.getConfiguration(
+                'vsc-github-trending'
+            );
+            panel.sendConfig(config);
         })
     );
 }
@@ -39,6 +45,7 @@ class ReactPanel {
                 column || vscode.ViewColumn.One
             );
         }
+        return ReactPanel.currentPanel;
     }
 
     private constructor(extensionPath: string, column: vscode.ViewColumn) {
@@ -64,7 +71,7 @@ class ReactPanel {
         this._panel.webview.html = this._getHtmlForWebview();
 
         // Listen for when the panel is disposed
-        // This happens when the user closes the panel or when the panel is closed programatically
+        // This happens when the user closes the panel or when the panel is closed programmatically
         this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
 
         // Handle messages from the webview
@@ -79,6 +86,12 @@ class ReactPanel {
             null,
             this._disposables
         );
+    }
+
+    public sendConfig(config: any) {
+        // Send a message to the webview webview.
+        // You can send any JSON serializable data.
+        this._panel.webview.postMessage({ command: 'configuration', config });
     }
 
     public dispose() {

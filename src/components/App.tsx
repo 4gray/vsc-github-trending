@@ -10,6 +10,8 @@ import './Header.css';
 import RepositoryContainer from './RepositoryContainer';
 
 class App extends React.Component<any> {
+    private BASE_API_URL = 'https://github-trending-api.now.sh';
+
     public state = {
         intervals: ['daily', 'weekly', 'monthly'],
         languages: { all: [], popular: [] },
@@ -18,6 +20,8 @@ class App extends React.Component<any> {
         selectedInterval: 'daily',
         selectedLanguage: 'javascript',
     };
+
+    public languages: string[] = [];
 
     public theme = createMuiTheme({
         palette: {
@@ -29,29 +33,47 @@ class App extends React.Component<any> {
     });
 
     public componentDidMount() {
-        Promise.all([this.getRepositories(), this.getLanguages()]).then(
-            result => {
-                this.setState({ loading: false });
+        // Handle messages sent from the extension to the webview
+        window.addEventListener('message', async event => {
+            this.setState({ loading: true });
+            const message = event.data; // The json data that the extension sent
+            switch (message.command) {
+                case 'configuration':
+                    this.languages = message.config.languages;
+                    this.state.selectedLanguage =
+                        message.config.selectedLanguage;
+                    this.state.selectedInterval =
+                        message.config.selectedInterval;
+                    await this.getRepositories();
+                    await this.getLanguages();
+                    this.setState({ loading: false });
+                    break;
             }
-        );
+        });
     }
 
     public getLanguages() {
-        fetch('https://github-trending-api.now.sh/languages')
+        return fetch(this.BASE_API_URL + '/languages')
             .then(response => response.json())
-            .then(data =>
+            .then(data => {
+                // TODO: create model
+                data = data.filter(
+                    (item: { name: string; urlParam: string }) =>
+                        this.languages.indexOf(item.urlParam) !== -1
+                );
                 this.setState({
                     languages: {
                         all: data,
                     },
-                })
-            );
+                });
+            });
     }
 
     public getRepositories() {
         this.setState({ loading: true });
-        fetch(
-            'https://github-trending-api.now.sh/repositories?language=' +
+        return fetch(
+            this.BASE_API_URL +
+                '/repositories?language=' +
                 this.state.selectedLanguage +
                 '&since=' +
                 this.state.selectedInterval

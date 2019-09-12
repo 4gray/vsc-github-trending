@@ -1,7 +1,7 @@
 {
     "name": "vsc-github-trending",
     "displayName": "VSC Github Trending",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Explore trending Github repositories directly in VSCode",
     "engines": {
         "vscode": "^1.37.0"
@@ -20,7 +20,8 @@
         "theme": "dark"
     },
     "activationEvents": [
-        "onCommand:react-webview.start"
+        "onCommand:react-webview.start",
+        "onCommand:react-webview.setConfig"
     ],
     "main": "./build/ext-src/extension.js",
     "contributes": {
@@ -30,7 +31,45 @@
                 "title": "Open Github Trending",
                 "category": "GT"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "VSC Github Trending Configuration",
+            "properties": {
+                "vsc-github-trending.languages": {
+                    "type": "array",
+                    "default": [
+                        "c++",
+                        "css",
+                        "go",
+                        "html",
+                        "javascript",
+                        "java",
+                        "php",
+                        "python",
+                        "ruby",
+                        "rust",
+                        "typescript"
+                    ],
+                    "description": "Names of the preferred languages"
+                },
+                "vsc-github-trending.selectedLanguage": {
+                    "type": "string",
+                    "default": "go",
+                    "description": "Selected language"
+                },
+                "vsc-github-trending.selectedInterval": {
+                    "type": "string",
+                    "enum": [
+                        "daily",
+                        "weekly",
+                        "monthly"
+                    ],
+                    "default": "monthly",
+                    "description": "Selected time interval (daily, weekly or monthly)"
+                }
+            }
+        }
     },
     "categories": [
         "Other"
