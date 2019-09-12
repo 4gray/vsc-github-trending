@@ -20,7 +20,10 @@ class LanguageSelect extends React.Component<any, any> {
                             id: 'language',
                             name: 'selectedLanguage',
                         }}>
-                        <option disabled={true}>All languages</option>
+                        <option disabled={true}>Select language</option>
+                        <option key="" value="">
+                            All languages
+                        </option>
                         {this.props.languages.all.map((lang: any) => (
                             <option key={lang.urlParam} value={lang.urlParam}>
                                 {lang.name}
