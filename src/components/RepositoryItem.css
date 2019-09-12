@@ -1,3 +1,7 @@
+.Item {
+    margin: 10px;
+}
+
 .vscode-dark .Item {
     margin: 10px;
     background: #0000005c;
@@ -16,6 +20,7 @@
 
 .CardActions {
     margin-left: 10px;
+    color: #333 !important;
 }
 
 .CardActions > span {
@@ -24,4 +29,13 @@
 
 .chip {
     margin-right: 10px;
+    color: #999 !important;
+}
+
+.vscode-dark .CardActions {
+    color: #fff;
+}
+
+.vscode-light .CardActions {
+    color: #333;
 }

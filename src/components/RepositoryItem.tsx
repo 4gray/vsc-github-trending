@@ -8,6 +8,9 @@ import StarIcon from '@material-ui/icons/Star';
 import * as React from 'react';
 import './RepositoryItem.css';
 
+/**
+ * Component with material card represents single repository item
+ */
 class RepositoryItem extends React.Component<any> {
     constructor(props: any) {
         super(props);
@@ -67,6 +70,7 @@ class RepositoryItem extends React.Component<any> {
                             aria-label={person.username}>
                             <Link href={person.href}>
                                 <img
+                                    alt="avatar"
                                     src={person.avatar}
                                     width={30}
                                     height={30}
