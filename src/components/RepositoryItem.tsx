@@ -7,20 +7,29 @@ import CallSplitIcon from '@material-ui/icons/CallSplit';
 import StarIcon from '@material-ui/icons/Star';
 import * as React from 'react';
 import './RepositoryItem.css';
+import { Repository } from './App';
 
 /**
+ * Component props
+ */
+type RepositoryItemProps = {
+    item: Repository;
+};
+
+/**
+ * Repository Item component
  * Component with material card represents single repository item
  */
-class RepositoryItem extends React.Component<any> {
-    constructor(props: any) {
-        super(props);
-    }
-
-    public formatStars(num: number) {
+class RepositoryItem extends React.Component<RepositoryItemProps> {
+    /**
+     * Format amount of stars if the number is bigger then 999
+     * @param num number of stars
+     */
+    formatStars(num: number) {
         return num > 999 ? (num / 1000).toFixed(1) + 'k' : num;
     }
 
-    public render() {
+    render() {
         return (
             <Card
                 title={this.props.item.name}

@@ -4,8 +4,21 @@ import InputLabel from '@material-ui/core/InputLabel';
 import * as React from 'react';
 import './App.css';
 
-class DateSelect extends React.Component<any, any> {
-    public render() {
+/**
+ * Component props definition
+ */
+type DateSelectProps = {
+    className: string;
+    selectedInterval: string;
+    onChange?(event: any): void;
+    intervals?: any[];
+};
+
+/**
+ * Date/Interval selector component
+ */
+class DateSelect extends React.Component<DateSelectProps> {
+    render() {
         return (
             <form autoComplete="off">
                 <FormControl className="repo-field">

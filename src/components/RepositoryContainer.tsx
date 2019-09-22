@@ -1,11 +1,19 @@
 import * as React from 'react';
 import RepositoryItem from './RepositoryItem';
+import { Repository } from './App';
+
+/**
+ * Component props
+ */
+type RepositoryContainerProps = {
+    repositories: Repository[];
+};
 
 /**
  * Container wrapper component with repository items
  */
-class RepositoryContainer extends React.Component<any, any> {
-    public render() {
+class RepositoryContainer extends React.Component<RepositoryContainerProps> {
+    render() {
         return (
             <>
                 {this.props.repositories.map((item: any, index: number) => (

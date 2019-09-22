@@ -3,9 +3,23 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import * as React from 'react';
 import './App.css';
+import { Language } from './App';
 
-class LanguageSelect extends React.Component<any, any> {
-    public render() {
+/**
+ * Component props
+ */
+type LanguageSelectProps = {
+    className: string;
+    selectedLanguage: string;
+    onChange?(event: any): void;
+    languages: Language[];
+};
+
+/**
+ * Language selector component
+ */
+class LanguageSelect extends React.Component<LanguageSelectProps> {
+    render() {
         return (
             <form autoComplete="off">
                 <FormControl className="repo-field">
@@ -24,7 +38,7 @@ class LanguageSelect extends React.Component<any, any> {
                         <option key="" value="">
                             All languages
                         </option>
-                        {this.props.languages.all.map((lang: any) => (
+                        {this.props.languages.map((lang: any) => (
                             <option key={lang.urlParam} value={lang.urlParam}>
                                 {lang.name}
                             </option>
