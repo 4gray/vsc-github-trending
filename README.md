@@ -3,6 +3,7 @@
 [![Version](https://vsmarketplacebadge.apphb.com/version/4gray.vsc-github-trending.svg)](https://marketplace.visualstudio.com/items?itemName=4gray.vsc-github-trending)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/4gray.vsc-github-trending.svg)](https://marketplace.visualstudio.com/items?itemName=4gray.vsc-github-trending)
 [![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/4gray.vsc-github-trending.svg)](https://marketplace.visualstudio.com/items?itemName=4gray.vsc-github-trending)
+[![Actions Status](https://github.com/4gray/vsc-github-trending/workflows/Build%20application/badge.svg)](https://github.com/4gray/vsc-github-trending/actions)
 
 Explore Github Trending repositories directly from Visual Studio Code. Extension is based on React, [Material-UI](https://material-ui.com/), [Trending API](https://github.com/huchenme/github-trending-api) and VSCode Webview API.
 
