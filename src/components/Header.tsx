@@ -9,7 +9,7 @@ class Header extends React.Component<any> {
     public render() {
         return (
             <Card className="Header">
-                <Grid container={true} spacing={24}>
+                <Grid container={true} spacing={6}>
                     <Grid item={true} xs={3}>
                         <LanguageSelect
                             className="LanguageSelect"

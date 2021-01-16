@@ -45,7 +45,7 @@ class RepositoryItem extends React.Component<RepositoryItemProps> {
                 </CardContent>
                 <CardActions
                     className="CardActions"
-                    disableActionSpacing={true}>
+                    disableSpacing={true}>
                     <Tooltip title="Language" aria-label="Language">
                         <Chip
                             label={this.props.item.language || 'Not provided'}

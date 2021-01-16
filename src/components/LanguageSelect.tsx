@@ -23,7 +23,7 @@ class LanguageSelect extends React.Component<LanguageSelectProps> {
         return (
             <form autoComplete="off">
                 <FormControl className="repo-field">
-                    <InputLabel className="label" htmlFor="language">
+                    <InputLabel shrink className="label" htmlFor="language">
                         Language
                     </InputLabel>
                     <NativeSelect

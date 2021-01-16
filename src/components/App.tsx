@@ -82,9 +82,6 @@ class App extends React.Component<any, AppState> {
         palette: {
             type: 'dark',
         },
-        typography: {
-            useNextVariants: true,
-        },
     });
 
     /**
