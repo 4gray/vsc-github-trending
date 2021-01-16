@@ -14,4 +14,7 @@ jobs:
           cmd: build # will run `yarn build` command
       - uses: borales/actions-yarn@v2.0.0
         with:
+          cmd: global add vsce # will install vsce globally
+      - uses: borales/actions-yarn@v2.0.0
+        with:
           cmd: package # will run `yarn package` command
