@@ -100,6 +100,9 @@
         "rewire": "^4.0.1",
         "typescript": "^3.6.0"
     },
+    "resolutions": {
+        "@types/react": "^16.9.0"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/4gray/vsc-github-trending.git"
