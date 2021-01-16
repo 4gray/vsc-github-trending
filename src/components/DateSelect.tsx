@@ -10,7 +10,7 @@ import './App.css';
 type DateSelectProps = {
     className: string;
     selectedInterval: string;
-    onChange?(event: any): void;
+    onChange(event: any): void;
     intervals?: any[];
 };
 

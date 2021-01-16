@@ -6,7 +6,7 @@ import DateSelect from './DateSelect';
 import LanguageSelect from './LanguageSelect';
 
 class Header extends React.Component<any> {
-    public render() {
+    render() {
         return (
             <Card className="Header">
                 <Grid container={true} spacing={6}>

@@ -4,15 +4,18 @@
     "version": "1.1.0",
     "description": "Explore trending Github repositories directly in VSCode",
     "engines": {
-        "vscode": "^1.37.0"
+        "vscode": "^1.38.0"
     },
     "keywords": [
         "github",
         "popular",
+        "programming",
+        "software",
         "trending",
         "repositories"
     ],
     "publisher": "4gray",
+    "license": "MIT",
     "icon": "assets/icon.png",
     "homepage": "https://4gray.github.io/vsc-github-trending",
     "galleryBanner": {
@@ -87,7 +90,8 @@
         "build": "./scripts/build-non-split.js && tsc -p tsconfig.extension.json",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "package": "vsce package --yarn"
+        "package": "vsce package --yarn",
+        "watch": "tsc -w -p ./"
     },
     "devDependencies": {
         "@types/jest": "^24.0.18",
@@ -95,13 +99,19 @@
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
         "@types/vscode": "^1.37.0",
+        "@typescript-eslint/eslint-plugin": "^4.13.0",
+        "@typescript-eslint/parser": "^4.13.0",
+        "eslint": "^7.18.0",
         "prettier": "^1.18.2",
-        "react-scripts": "^3.1.1",
+        "react-scripts": "^4.0.1",
         "rewire": "^4.0.1",
         "typescript": "^3.6.0"
     },
     "resolutions": {
         "@types/react": "^17.0.0"
+    },
+    "bugs": {
+        "url": "https://github.com/4gray/vsc-github-trending/issues"
     },
     "repository": {
         "type": "git",

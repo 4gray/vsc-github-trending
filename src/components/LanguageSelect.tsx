@@ -11,7 +11,7 @@ import { Language } from './App';
 type LanguageSelectProps = {
     className: string;
     selectedLanguage: string;
-    onChange?(event: any): void;
+    onChange(event: any): void;
     languages: Language[];
 };
 
