@@ -57,7 +57,7 @@ type AppState = {
  */
 class App extends React.Component<any, AppState> {
     /** Base URL of Github Trending API */
-    BASE_API_URL = 'https://github-trending-api.now.sh';
+    BASE_API_URL = 'https://gtrend.yapie.me';
 
     state: AppState = {
         /** trending interval */
