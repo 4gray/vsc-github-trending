@@ -48,7 +48,7 @@ class RepositoryItem extends React.Component<RepositoryItemProps> {
                     disableActionSpacing={true}>
                     <Tooltip title="Language" aria-label="Language">
                         <Chip
-                            label={this.props.item.language}
+                            label={this.props.item.language || 'Not provided'}
                             variant="outlined"
                             className="chip"
                         />
